@@ -29,7 +29,18 @@ class MyApp:
        	    self.up.grid(row=0,column=0)
        	    # Bind an event to the first button
        	    self.up.bind("<Button-1>", self.upClicked)
-       	    
+       	    self.down = Button(self.myContainer1)
+       	    self.down.configure(text="down", background="green")
+       	    self.down.grid(row=0,column=3)
+       	    self.down.bind("<Button-1>", self.downClicked)
+       	    self.left = Button(self.myContainer1)
+       	    self.left.configure(text="left", background="green")
+       	    self.left.grid(row=0,column=1)
+       	    self.left.bind("<Button-1>", self.leftClicked)
+       	    self.right = Button(self.myContainer1)
+       	    self.right.configure(text="right", background="green")
+       	    self.right.grid(row=0,column=2)
+       	    self.right.bind("<Button-1>", self.rightClicked)
        	    # No need to edit this - just includes the drawpad into our frame
        	    drawpad.pack(side=RIGHT)
        	    # call the animate function to start our recursion
@@ -47,7 +58,20 @@ class MyApp:
 	   global oval
 	   global player
 	   drawpad.move(player,0,-20)
-		
+	
+	def downClicked(self, event):   
+	   global oval
+	   global player
+	   drawpad.move(player,0,20)		
 
+        def leftClicked(self, event):   
+	   global oval
+	   global player
+	   drawpad.move(player,-20,0)	
+	   	
+	def rightClicked(self, event):   
+	   global oval
+	   global player
+	   drawpad.move(player,20,0)	
 app = MyApp(root)
 root.mainloop()
